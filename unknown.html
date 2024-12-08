@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To My Fiancé</title>
+    <style>
+        /* Existing Styles */
+        body {
+            font-family: 'Arial, sans-serif';
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #FFD1DC, #FFD1DC);        
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #B22222;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #3E2723;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .heart-icon {
+            font-size: 5em;
+            color: #ff6f61;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .surprise-button {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            animation: fadeIn 4s ease-in-out;
+        }
+
+        .surprise-button:hover {
+            background-color: #ff3e30;
+            transform: scale(1.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .special-line {
+            color: #C71585; 
+        }
+
+        .hidden-message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #6A0DAD;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .hidden-image {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Floating Hearts Styles */
+        .heart {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: #FF4040;
+            transform: rotate(-45deg);
+            animation: float 5s infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background: #FF4040;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(-45deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-800px) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To My King👑,</h1>
+        <p class="special-line">You are the OWNER of my heart, and this is just for YOU.</p>
+        <div class="heart-icon">❤️</div>
+        <button class="surprise-button" onclick="showMessage()">Click Me for a Surprise</button>
+        <div class="hidden-message" id="hiddenMessage">
+            <p>Will you be mine forever???🌹</p>
+            <img id="hiddenImage" class="hidden-image" src="https://i.pinimg.com/originals/23/6e/dd/236edd320f07f4fb99a823ae19ef7c49.gif" alt="Surprise Image">
+	    <p>I Love you a lot babluuuu😘😘😘</p>
+	    <p>You are my happiness baba😍</p>
+	    <p>The end of today's surprise🔚</p>
+	    <p>⛔⛔⛔</p>
+	    <br>
+	    <br>
+	    <br>
+	    <p>Okay...Now tell me, HOW WAS THE SURPRISE?🤗</p>
+        </div>
+    </div>
+
+    <script>
+        let heartsInterval;
+        let maxHearts = 13; // Max number of hearts that can appear at a time
+        let currentHearts = 0;
+
+        function createHeart() {
+            if (currentHearts >= maxHearts) return; // Stop if max number of hearts is reached
+
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+
+            const randomSize = Math.random() * 20 + 10;
+            heart.style.width = `${randomSize}px`;
+            heart.style.height = `${randomSize}px`;
+
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+
+            document.body.appendChild(heart);
+            currentHearts++;
+
+            setTimeout(() => {
+                heart.remove();
+                currentHearts--; // Decrease the count once heart is removed
+            }, 5000);
+        }
+
+        function showMessage() {
+            const message = document.getElementById('hiddenMessage');
+            message.style.display = 'block'; // Show the hidden message and image
+
+            // Start floating hearts
+            if (!heartsInterval) {
+                heartsInterval = setInterval(createHeart, 300);
+            }
+        }
+    </script>
+</body>
+</html>
